@@ -1,0 +1,286 @@
+<header class="top no-print">
+  <div class="top-in">
+    <div class="brand">
+      <div class="logo">AI</div>
+      <div>기업 AI 사용환경 자기진단
+        <small>전수조사 · 환경별 점검 · 보안기술 진단 · 종합 리포트</small>
+      </div>
+    </div>
+    <div class="pbar" aria-hidden="true"><i id="pbarFill"></i></div>
+    <div class="mini"><b id="pbarText">0%</b> 진행</div>
+    <button class="btn-ghost" id="btnGlossary" type="button">용어 사전</button>
+    <button class="btn-ghost" id="btnReset" type="button">초기화</button>
+  </div>
+</header>
+
+<main id="main">
+
+<nav class="rail no-print" id="rail" aria-label="진행 단계">
+  <a href="#" data-goto="inventory"><span class="n">1</span>환경 발굴</a>
+  <a href="#" data-goto="common"><span class="n">2</span>공통 통제</a>
+  <a href="#" data-goto="assess"><span class="n">3</span>환경별 점검</a>
+  <a href="#" data-goto="tech"><span class="n">4</span>보안기술</a>
+  <a href="#" data-goto="result"><span class="n">5</span>종합 리포트</a>
+</nav>
+
+<!-- ============ INTRO ============ -->
+<section id="view-intro">
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">AI GOVERNANCE SELF-ASSESSMENT · 약 40–60분</div>
+        <h1>회사에서 쓰는 AI,<br>전부 파악하고 있나요?</h1>
+        <p class="lead">
+          회사에서 쓰는 <b>모든 AI 환경</b>을 찾아 점검하고, 우리 회사에 <b>어떤 보안위협</b>이 있는지 검토하는 체크 도구입니다.
+          웹 AI 서비스, 개발 도구, 사내 시스템 연동, 업무 도구에 내장된 AI, 승인 없이 쓰는 그림자 AI까지 7개 범주 30종을 다룹니다.
+          환경별 담당자가 통제 항목과 보안 이슈를 확인하면 <b>위험 순위·부족한 보안기술·개선 로드맵</b>을 담은 종합 리포트가 나옵니다.
+        </p>
+        <div class="btn-row" style="margin-top:18px">
+          <button class="btn" id="btnStart" type="button">전수조사 시작 →</button>
+          <button class="btn-ghost" id="btnLoadSample" type="button">예시 조직으로 결과 보기</button>
+        </div>
+        <p class="note">모든 응답은 브라우저 안에서만 처리됩니다. 서버 전송·외부 호출이 없습니다. 용어 옆 <b>?</b> 버튼을 누르면 설명이 나옵니다.</p>
+      </div>
+      <aside class="hero-card">
+        <h2 class="cardt">진행 순서</h2>
+        <ol class="step-list">
+          <li><span class="n">1</span><div><b>환경 발굴</b><br>7개 범주 30종 환경 중 사용 중인 것을 모두 선택하고, 목록에 없으면 직접 추가</div></li>
+          <li><span class="n">2</span><div><b>전사 공통 통제</b><br>정책·계약·교육·사고대응 등 환경과 무관하게 한 번만 확인하는 14개 항목</div></li>
+          <li><span class="n">3</span><div><b>환경별 점검</b><br>환경마다 담당 관리자가 프로파일 4문항 + 통제 항목 + <b>정보보안 이슈</b>를 체크</div></li>
+          <li><span class="n">4</span><div><b>보안기술 점검</b><br>선택한 환경에 필요한 보안기술·제품군 26종 중 보유 현황을 체크</div></li>
+          <li><span class="n">5</span><div><b>종합 리포트</b><br>위험 매트릭스, 조직 점수, 이슈, 부족한 보안기술 추천, 개선 로드맵 — HTML·PDF로 저장</div></li>
+        </ol>
+      </aside>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <h2 class="cardt" style="margin-bottom:10px">왜 ‘환경별’로 나눠야 하나요</h2>
+    <p style="font-size:13.5px;color:var(--ink2);margin-bottom:12px">
+      같은 AI라도 <b>데이터가 어디로 흐르는지</b>가 환경마다 완전히 다릅니다.
+      코딩 에이전트는 저장소와 셸에, 웹 챗봇은 브라우저 붙여넣기에, 내부 API 연동은 운영 DB에 닿아 있습니다.
+      하나의 체크리스트로 뭉뚱그리면 <b>가장 위험한 환경</b>이 가장 느슨한 답변에 묻힙니다.
+    </p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:150px">범주</th><th>주요 환경</th><th style="width:170px">핵심 노출 지점</th></tr></thead>
+        <tbody>
+          <tr><td><b>개발·코딩</b></td><td>IDE 어시스턴트, CLI 에이전트, 자율 PR 에이전트, 코드 인덱싱 SaaS</td><td>저장소·셸·자격증명</td></tr>
+          <tr><td><b>업무용 웹 AI</b></td><td>범용 챗봇 웹, AI 검색, 문서·번역, 이미지 생성, 회의록 AI, AI 브라우저</td><td>브라우저 붙여넣기·첨부</td></tr>
+          <tr><td><b>내부 시스템 연동</b></td><td>RAG 지식검색, 업무 자동화, 배치 파이프라인, 그룹웨어 AI, AI 에이전트·MCP 연동</td><td>운영 DB·사내 시스템 권한</td></tr>
+          <tr><td><b>업무 도구 내장</b></td><td>M365 Copilot, Workspace Gemini, 협업툴 AI, CRM·ERP AI, HR·채용 AI</td><td>메일·문서·회의록 전체</td></tr>
+          <tr><td><b>고객 대면</b></td><td>대외 서비스 내 AI 기능, 고객 상담 챗봇, 마케팅 콘텐츠 생성</td><td>외부 공격 입력·고객 개인정보</td></tr>
+          <tr><td><b>인프라·플랫폼</b></td><td>클라우드 AI 플랫폼, 자체 호스팅 모델, AI 게이트웨이, 모델 학습·파인튜닝</td><td>키 관리·리전·학습 데이터</td></tr>
+          <tr><td><b>그림자 AI</b></td><td>부서 단위 비인가 구독, 개인 계정, 브라우저 확장</td><td>가시성 밖 통제 불가</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="cardt" style="margin-bottom:10px">점수 산출 방식</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:160px">구성</th><th>의미</th><th style="width:86px">범위</th></tr></thead>
+        <tbody>
+          <tr><td><b>환경 잠재위험</b></td><td>환경 유형의 구조적 위험도 + 데이터 등급·권한·사용자 범위·규제 답변으로 산출</td><td class="num">0–100</td></tr>
+          <tr><td><b>환경 통제율</b></td><td>그 환경에 적용되는 통제 항목의 가중 달성률 (예 1.0 / 부분 0.5 / 아니오·모름 0)</td><td class="num">0–100%</td></tr>
+          <tr><td><b>환경 잔여위험</b></td><td>잠재위험 × (1 − 통제율 × 0.9) × (1 + 필수 통제 미달률 × 0.5). 잠재위험을 넘지 않으며, 필수 항목 미비 1개당 6점의 하한을 적용</td><td class="num">0–100</td></tr>
+          <tr><td><b>이슈 가산</b></td><td>‘정보보안 이슈’ 체크에서 발견된 항목의 심각도 합계(치명 5·중대 3·경미 1점, 최대 20점)</td><td class="num">0–20</td></tr>
+          <tr><td><b>조직 종합점수</b></td><td>환경 위험점수(잔여위험 + 이슈 가산)를 <b>노출 가중치</b>(사용자 범위·데이터 등급 답변)로 가중 평균하고, 전사 공통 통제 미비분(최대 15점)을 더함</td><td class="num">0–100</td></tr>
+          <tr><td><b>보안기술 확보율</b></td><td>선택한 환경에 필요한 보안기술 중 보유 비율(필수 2배·권장 1배 가중). 위험 점수와 별도로 표시</td><td class="num">0–100%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert info" style="margin-top:12px">
+      <span>ℹ</span>
+      <div>점수는 <b>절대 등급이 아니라 우선순위 도구</b>입니다. 목표는 100점이 아니라
+      <b>가장 위험한 환경 3개의 잔여위험을 40점 이하로 낮추는 것</b>입니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEP 1: INVENTORY ============ -->
+<section id="view-inventory" hidden>
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">STEP 1 / 5</div>
+      <h2>AI 사용환경 전수조사</h2>
+      <p class="hint">우리 회사에서 <b>실제로 쓰고 있는</b> 환경을 모두 선택하세요. 하나도 빠뜨리지 않는 것이 목적입니다 — 모르면 일단 선택하고 3단계에서 ‘모름’으로 답하세요.</p>
+    </div>
+    <div class="btn-row no-print">
+      <button class="btn-ghost btn-sm" id="btnSelectCommon" type="button">일반적인 기업 구성 선택</button>
+    </div>
+  </div>
+
+  <div class="card card-tight" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+    <div style="font-size:13px;color:var(--ink2)">
+      선택한 환경 <b id="invCount" style="font-size:16px;color:#0f172a">0</b>개
+      <span id="invByCat" style="color:var(--muted)"></span>
+    </div>
+    <div style="margin-left:auto;display:flex;gap:8px">
+      <button class="btn-ghost btn-sm" id="btnAddCustom" type="button">+ 목록에 없는 환경 추가</button>
+    </div>
+  </div>
+
+  <div id="customHost"></div>
+  <div id="catalogHost"></div>
+
+  <div class="card" id="invMetaCard" hidden>
+    <h2 class="cardt">선택한 환경 기본 정보</h2>
+    <p class="hint" style="margin-bottom:12px">담당 관리자와 사용 규모를 적어 두면 3단계에서 누가 점검해야 하는지, 어떤 환경이 가장 중요한지 판단할 수 있습니다.</p>
+    <div id="invMetaHost"></div>
+  </div>
+
+  <div class="navfoot no-print"><div class="in">
+    <button class="btn-ghost" data-goto="intro" type="button">← 이전</button>
+    <div class="cnt" id="invFoot"></div>
+    <button class="btn" id="btnToCommon" type="button">전사 공통 통제로 →</button>
+  </div></div>
+</section>
+
+<!-- ============ STEP 2: COMMON ============ -->
+<section id="view-common" hidden>
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">STEP 2 / 5</div>
+      <h2>전사 공통 통제 점검</h2>
+      <p class="hint">환경이 몇 개든 <b>한 번만</b> 확인하면 되는 항목입니다. 보통 정보보호 담당자·CISO가 답합니다.</p>
+    </div>
+  </div>
+  <div id="commonHost"></div>
+  <div class="navfoot no-print"><div class="in">
+    <button class="btn-ghost" data-goto="inventory" type="button">← 이전</button>
+    <div class="cnt" id="commonFoot"></div>
+    <button class="btn" id="btnToAssess" type="button">환경별 점검으로 →</button>
+  </div></div>
+</section>
+
+<!-- ============ STEP 3: PER-ENV ============ -->
+<section id="view-assess" hidden>
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">STEP 3 / 5</div>
+      <h2>환경별 관리자 점검</h2>
+      <p class="hint">환경마다 <b>프로파일 → 통제 → 정보보안 이슈</b> 순서로 확인합니다. 확신이 없으면 ‘모름’을 선택하세요.</p>
+    </div>
+  </div>
+  <div class="envtabs no-print" id="envTabs"></div>
+  <div id="assessHost"></div>
+  <div class="navfoot no-print"><div class="in">
+    <button class="btn-ghost" id="btnPrevEnv" type="button">← 이전 환경</button>
+    <div class="cnt" id="assessFoot"></div>
+    <button class="btn" id="btnNextEnv" type="button">다음 환경 →</button>
+  </div></div>
+</section>
+
+<!-- ============ STEP 4: TECH ============ -->
+<section id="view-tech" hidden>
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">STEP 4 / 5</div>
+      <h2>보안기술·제품군 보유 점검</h2>
+      <p class="hint">1단계에서 선택한 환경에 필요한 보안기술만 표시합니다. 회사가 쓰고 있는지 고르고, 쓰는 제품명을 적어 두세요. 모르면 ‘모름’을 고르고 각 기술의 <b>?</b> 설명을 참고하세요.</p>
+    </div>
+  </div>
+  <div id="techHost"></div>
+  <div class="navfoot no-print"><div class="in">
+    <button class="btn-ghost" data-goto="assess" type="button">← 이전</button>
+    <div class="cnt" id="techFoot"></div>
+    <button class="btn" id="btnToResult" type="button">종합 리포트 보기 →</button>
+  </div></div>
+</section>
+
+<!-- ============ STEP 5: RESULT ============ -->
+<section id="view-result" hidden>
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">STEP 5 / 5</div>
+      <h2>AI 사용환경 보안 종합 리포트</h2>
+      <p class="hint" id="resultStamp"></p>
+    </div>
+    <div class="btn-row no-print">
+      <button class="btn-ghost btn-sm" id="btnReport" type="button">리포트 저장(HTML)</button>
+      <button class="btn-ghost btn-sm" id="btnPrint" type="button">인쇄 / PDF</button>
+      <button class="btn-ghost btn-sm" id="btnExport" type="button">결과 저장(JSON)</button>
+      <button class="btn-ghost btn-sm" id="btnImport" type="button">불러오기</button>
+      <input type="file" id="fileInput" accept="application/json" class="sr" aria-label="저장한 진단 결과 JSON 파일 선택">
+    </div>
+  </div>
+
+  <div class="card" id="resultHero"></div>
+  <div class="card" id="resultSummary"></div>
+
+  <div class="card">
+    <div class="section-head" style="margin:0 0 10px">
+      <h2 class="cardt" style="margin:0">환경별 위험 매트릭스</h2>
+      <p class="hint">노출 규모가 큰 환경이 위쪽에 옵니다. 오른쪽으로 갈수록 위험합니다.</p>
+    </div>
+    <div class="tbl-wrap"><table id="matrixTable"></table></div>
+  </div>
+
+  <div class="card">
+    <h2 class="cardt">범주별 위험 분포</h2>
+    <p class="hint" style="margin-bottom:12px">어느 범주에 통제가 몰려 있는지, 어디가 비었는지 보여줍니다.</p>
+    <div id="catBars" style="display:grid;gap:10px"></div>
+  </div>
+
+  <div class="card">
+    <h2 class="cardt">정보보안 이슈 — 발견된 항목</h2>
+    <p class="hint" style="margin-bottom:12px" id="issueSummary"></p>
+    <div id="issueList"></div>
+  </div>
+
+  <div id="techResult"></div>
+
+  <div class="section-head"><h2>부족한 통제와 채우는 방법</h2>
+    <p class="hint" id="gapSummary"></p></div>
+  <div id="gapList"></div>
+
+  <div class="section-head"><h2>30 / 60 / 90일 개선 로드맵</h2>
+    <p class="hint">통제 미달(필수·미구현 우선), 정보보안 이슈(심각도), 부족한 보안기술(필수 우선)을 기간별로 배치했습니다.</p></div>
+  <div class="card"><div class="roadmap" id="roadmap"></div></div>
+
+  <div class="card">
+    <h2 class="cardt">참고 — 근거 기준</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;font-size:12.5px;color:var(--ink2);margin-top:8px" id="standardList"></div>
+    <div class="foot">
+      본 도구는 자체 점검용이며 법률 자문이나 인증 심사 결과를 대체하지 않습니다.
+      가중치와 기준은 조직의 데이터 등급 체계에 맞게 조정해 사용하세요.
+      응답 데이터는 브라우저를 벗어나지 않으며, ‘결과 저장’을 누를 때만 로컬 파일로 내려받습니다.
+      <br><br>
+      <b>조정 방법(선택)</b> — 파일을 텍스트 편집기로 열어
+      <code>ENV_TYPES</code>의 <code>baseRisk</code>(환경 유형별 구조적 위험),
+      <code>PROFILE_Q</code>의 가중치, 각 통제 항목의 <code>w</code>(1=보완 / 2=중요 / 3=필수),
+      <code>PARTIAL_CREDIT</code>(부분 응답 인정 비율), <code>TECH</code>의 <code>need</code>(범주별 보안기술 필요도 2=필수 / 1=권장)를
+      조직 기준으로 바꾼 뒤 저장하면 됩니다.
+      <br><br>
+      © 2026 이로운앤컴퍼니 (Eroun &amp; Company) · 소스 github.com/eroun-dsyoon/ai-env-security-check · 코드 MIT, 내용 CC BY 4.0
+    </div>
+  </div>
+
+  <div class="btn-row no-print" style="margin-top:6px">
+    <button class="btn" id="btnRestart" type="button">처음부터 다시</button>
+    <button class="btn-ghost" id="btnBackAssess" type="button">환경별 응답 수정</button>
+    <button class="btn-ghost" id="btnBackTech" type="button">보안기술 응답 수정</button>
+    <button class="btn-ghost" id="btnBackInventory" type="button">환경 목록 수정</button>
+  </div>
+</section>
+
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div id="helpPop" role="dialog" aria-live="polite" hidden>
+  <div class="hp-t"></div>
+  <div class="hp-d"></div>
+  <button class="hp-more" id="hpMore" type="button">용어 사전에서 보기 →</button>
+</div>
+
+<dialog id="glossDlg" aria-label="용어 사전">
+  <div class="gl-head">
+    <h2 class="cardt" style="margin:0">용어 사전</h2>
+    <button class="btn-ghost btn-sm" id="glossClose" type="button">닫기</button>
+  </div>
+  <input id="glossQ" type="search" placeholder="용어·설명 검색 (예: DLP, 인젝션)" aria-label="용어 검색">
+  <div id="glossList"></div>
+</dialog>
